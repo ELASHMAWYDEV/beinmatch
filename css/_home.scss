@@ -1,0 +1,53 @@
+.main-body-home {
+    margin-right: 40px;
+    width: 100%;
+    @include media(desktop-sm) {
+        margin-right: 0;
+    }
+    & > div {
+        margin-bottom: 25px;
+        &:nth-last-child(1) {
+            margin-bottom: 0;
+        }
+    }
+    .live-box {
+        @include bigBox;
+        .head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            .live {
+                text-transform: uppercase;
+                font-size: 24px;
+                direction: ltr;
+                span {
+                    display: inline-block;
+                    width: 15px;
+                    height: 15px;
+                    border-radius: 50%;
+                    background-color: $dark-red;
+                    border: 1.5px solid $light-red;
+                    margin-left: 10px;
+                }
+            }
+            .right {
+                font-size: 24px;
+            }
+        }
+        .match {
+            @include match-container;
+        }
+    }
+    .today-matchs {
+        @include bigBox;
+        .head {
+            font-size: 24px;
+            margin-bottom: 8px;
+
+        }
+        .match {
+            @include match-container;
+        }
+    }
+}

@@ -1,0 +1,198 @@
+//colors
+$white: #fff;
+$black: #2B2D34;
+$light-rose: #8062A7;
+$dark-rose: #564D80;
+$light-gray: #EAECEF;
+$dark-gray: #C1C2C7;
+$blue: #3B5BE2;
+$dark-red: #FA5858;
+$light-red: #FEB5B5;
+
+//fonts
+$cairo: 'Cairo', sans-serif;
+$tajawal: 'Tajawal', sans-serif;
+
+
+
+
+
+//mixins
+@mixin bigBox($color : $white) {
+    border-radius: 25px;
+    padding: 20px;
+    background-color: $color;
+
+    @if $color != $white {
+        color: $white;
+    } @else {
+        color: $black;
+    }
+
+    @include media(phone-lg) {
+        padding: 15px;
+    }
+}
+
+@mixin link {
+    font-size: 16px;
+    color: $black;
+    margin-left: 18px;
+    transition: all 0.3s ease;
+    &.active {
+        font-weight: 700;
+    }
+    &:hover {
+        color: $blue;
+    }
+}
+
+
+
+
+@mixin match-container {
+    padding: 0 25px;
+    margin-bottom: 15px;
+    @include media(phone-lg) {
+        padding: 0 5px;
+    }
+    .league {
+        @include league;
+    }
+    .game {
+        display: grid;
+        grid-template-areas: '. . league . .'
+                             'logo1 name1 time name2 logo2'
+                             '. . link . .';
+        align-items: center;
+        justify-content: space-between;
+        @include media(tablet-sm) {
+            grid-template-areas: '. . league . .'
+                             'logo1 . time . logo2'
+                             'name1 . link . name2';
+            row-gap: 20px;
+            column-gap: 5px;
+        }
+        @include media(phone-lg) {
+            grid-template-areas: '. league league .'
+                             'logo1 logo1 logo2 logo2'
+                             'name1 name1 name2 name2'
+                             '. time time .'
+                             '. link link .';
+            column-gap: 10px;
+        }
+
+    }
+    .team1-logo, .team2-logo {
+        width: 80px;
+        margin: auto;
+        @include media(phone-lg) {
+            width: 60px;
+        }
+        img {
+            width: 100%;
+        }
+    }
+    .team1-name, .team2-name {
+        border-radius: 15px;
+        color: $white;
+        background-color: $blue;
+        padding: 2px 20px;
+        text-align: center;
+        @include media(phone-lg) {
+            font-size: 12px;
+        }
+    }
+    .time {
+        color: $white;
+        background-color: $dark-gray;
+        border-radius: 15px;
+        padding: 2px 20px;
+        font-size: 16px;
+        text-align: center;
+        width: max-content;
+        text-align: center;
+        margin: auto;
+
+    }
+    .watch-link {
+        background-color: $light-rose;
+        padding: 5px 10px;
+        border-radius: 5px;
+        transition: 0.3s ease;
+        color: $white;
+        text-align: center;
+        &:hover {
+            background-color: $dark-rose;
+        }
+    }
+
+    &>span {
+        display: block;
+        width: 80%;
+        height: 3px;
+        background-color: $dark-gray;
+        border-radius: 5px;
+        margin: auto;  
+        margin-top: 25px;      
+    }
+
+    .score {
+        font-size: 40px;
+        text-align: center;
+        font-weight: 500;
+        @include media(tablet-lg) {
+            font-size: 24px;
+        }
+    }
+    .not-started {
+        font-size: 24px;
+        background-color: $dark-red;
+        border-radius: 10px;
+        padding: 5px 20px;
+        color: $white;
+        direction: ltr;
+        @include media(tablet-lg) {
+            font-size: 12px;
+        }
+    }
+
+    //THE GRID
+    .league {
+        grid-area: league;
+    }
+    .team1-logo {
+        grid-area: logo1;
+    }.team1-name {
+        grid-area: name1;
+    }
+    .time, .score  {
+        grid-area: time;
+    }
+    .team2-name {
+        grid-area: name2;
+    }
+    .team2-logo {
+        grid-area: logo2;
+    }
+    .watch-link {
+        grid-area: link;
+    }
+
+
+}
+
+@mixin league {
+    font-size: 16px;
+    padding: 3px 15px;
+    border-radius: 15px;
+    background-color: $black;
+    color: $white;
+    width: max-content;
+    // margin: auto;
+    text-align: center;
+    @include media(tablet-lg) {
+        font-size: 14px;
+    }
+
+}
